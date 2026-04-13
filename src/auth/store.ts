@@ -1,6 +1,6 @@
-import type LoginData from "../models/LoginData";
 import {create} from 'zustand'
 import {persist} from 'zustand/middleware'
+import type LoginData from "../models/LoginData";
 import type User from "../models/User";
 import type LoginResponseData from "../models/LoginResponseData";
 import { loginUser, logoutUser } from "../api/services/AuthService";

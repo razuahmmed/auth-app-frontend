@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { refreshToken } from '../api/services/AuthService';
 
 function OAuthSuccess() {
-    const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
 
   const changeLocalLoginData = useAuth((state) => state.changeLocalLoginData);
   const navigate = useNavigate();

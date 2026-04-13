@@ -4,7 +4,6 @@ import { Input } from '../components/ui/input'
 import { Label } from '../components/ui/label'
 import { Mail, Lock, User, Venus, CheckCircle2Icon } from 'lucide-react'
 import { Button } from '../components/ui/button'
-import OAuth2Buttons from '../components/OAuth2Buttons'
 import toast from 'react-hot-toast'
 import { useState, useEffect } from 'react'
 import type RegisterData from '../models/RegisterData'
@@ -15,6 +14,7 @@ import { getGender } from '../api/services/AuthService'
 import type Gender from '../models/Gender'
 import { Alert, AlertTitle } from '../components/ui/alert'
 import { Spinner } from '../components/ui/spinner'
+import OAuth2SignupButtons from '../components/OAuth2SignupButtons'
 
 function Signup() {
   const [data, setData] = useState<RegisterData>({
@@ -27,9 +27,9 @@ function Signup() {
 
   const navigate = useNavigate();
 
-   const [loading, setLoading] = useState<boolean>(false);
-   const [genders, setGenders] = useState<Gender[]>([]);
-    const [error, setError] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [genders, setGenders] = useState<Gender[]>([]);
+  const [error, setError] = useState<any>(null);
 
    useEffect(() => {
     getGender()
@@ -230,7 +230,7 @@ function Signup() {
               </div>
 
               {/* OAuth Buttons */}
-              <OAuth2Buttons />
+              <OAuth2SignupButtons />
             </form>
           </CardContent>
         </Card>

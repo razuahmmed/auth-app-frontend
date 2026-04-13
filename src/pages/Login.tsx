@@ -9,9 +9,9 @@ import { Spinner } from '../components/ui/spinner'
 import { useState, type FormEvent } from 'react'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router'
-import OAuth2Buttons from '../components/OAuth2Buttons'
 import type LoginData from '../models/LoginData'
 import useAuth from '../auth/store'
+import OAuth2LoginButtons from '../components/OAuth2LoginButtons'
 
 function Login() {
    const [loginData, setLoginData] = useState<LoginData>({
@@ -73,7 +73,6 @@ function Login() {
   };
 
   return (
-    
      <div className="min-h-screen flex items-center justify-center bg-background text-foreground px-4 py-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -175,7 +174,7 @@ function Login() {
               </div>
 
               {/* OAuth Buttons */}
-              <OAuth2Buttons />
+              <OAuth2LoginButtons />
             </form>
           </CardContent>
         </Card>

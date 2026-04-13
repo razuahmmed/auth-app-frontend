@@ -3,7 +3,7 @@ import { Button } from './ui/button';
 import { NavLink, useNavigate } from 'react-router';
 
 function Navbar() {
-     const checkLogin = useAuth((state) => state.checkLogin);
+    const checkLogin = useAuth((state) => state.checkLogin);
     const user = useAuth((state) => state.user);
     const logout = useAuth((state) => state.logout);
     const navigate = useNavigate();
