@@ -12,6 +12,12 @@ import Userlayout from './pages/users/Userlayout.tsx'
 import Userprofile from './pages/users/Userprofile.tsx'
 import OAuthSuccess from './pages/OAuthSuccess.tsx'
 import OAuthFailure from './pages/OAuthFailure.tsx'
+import Account from './pages/settings/Account.tsx'
+import Security from './pages/settings/Security.tsx'
+import Appearance from './pages/settings/Appearance.tsx'
+import ManageUser from './pages/admin/ManageUser.tsx'
+import ManageMenu from './pages/admin/ManageMenu.tsx'
+import Reports from './pages/admin/Reports.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -22,13 +28,21 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/signup' element={<Signup />} />
         <Route path='/services' element={<Services />} />
         <Route path='/about' element={<About />} />
-        <Route path="/dashboard" element={<Userlayout />}>
-          <Route index element={<Userhome />} />
-          <Route path="profile" element={<Userprofile />} />
-          {/* .... */}
-        </Route>
-         <Route path="oauth/success" element={<OAuthSuccess />} />
+        <Route path="oauth/success" element={<OAuthSuccess />} />
         <Route path="oauth/failure" element={<OAuthFailure />} />
+
+        <Route element={<Userlayout />}>
+          <Route path="/dashboard" element={<Userhome />} />
+          <Route path="/profile" element={<Userprofile />} />
+
+          <Route path='/settings/account' element={<Account />} />
+          <Route path='/settings/security' element={<Security />} />
+          <Route path='/settings/theme' element={<Appearance />} />
+
+          <Route path="/admin/users" element={<ManageUser />} />
+          <Route path="/admin/menus" element={<ManageMenu />} />
+          <Route path="/admin/reports" element={<Reports />} />
+        </Route>
       </Route>
     </Routes>
   </BrowserRouter>,

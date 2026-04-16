@@ -4,6 +4,7 @@ import type LoginData from "../../models/LoginData";
 import type LoginResponseData from "../../models/LoginResponseData";
 import type User from "../../models/User";
 import type Gender from "../../models/Gender";
+import type MenuInfo from "../../models/MenuInfo";
 
 //=== register function
 export const registerUser = async (signupData: RegisterData) => {
@@ -38,5 +39,11 @@ export const refreshToken = async () => {
 //=== get gender
 export const getGender = async () => {
   const response = await apiClient.get<Gender[]>(`/users/genders`);
+  return response.data;
+};
+
+//=== get menu
+export const getMenus = async () => {
+  const response = await apiClient.get<MenuInfo[]>(`/menus`);
   return response.data;
 };

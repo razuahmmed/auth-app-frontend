@@ -177,7 +177,7 @@ function Userprofile() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 
 export default Userprofile

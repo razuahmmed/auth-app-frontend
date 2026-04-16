@@ -9,8 +9,8 @@ import toast from 'react-hot-toast'
 import type UserT from '../../models/User'
 
 function Userhome() {
-    const user = useAuth((state) => state.user);
-    const [user1, setUser1] = useState<UserT | null>(null);
+  const user = useAuth((state) => state.user);
+  const [user1, setUser1] = useState<UserT | null>(null);
 
   const getUserData = async () => {
     try {

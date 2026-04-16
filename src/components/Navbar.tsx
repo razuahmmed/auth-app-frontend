@@ -3,13 +3,13 @@ import { Button } from './ui/button';
 import { NavLink, useNavigate } from 'react-router';
 
 function Navbar() {
-    const checkLogin = useAuth((state) => state.checkLogin);
-    const user = useAuth((state) => state.user);
-    const logout = useAuth((state) => state.logout);
-    const navigate = useNavigate();
+  const checkLogin = useAuth((state) => state.checkLogin);
+  const user = useAuth((state) => state.user);
+  const logout = useAuth((state) => state.logout);
+  const navigate = useNavigate();
 
-    return (
-        <nav className="py-5  dark:border-b border-gray-700 md:py-0 flex md:flex-row gap-4 md:gap-0 flex-col md:h-14 justify-around items-center    ">
+  return (
+    <nav className="py-5 dark:border-b border-gray-700 md:py-0 flex md:flex-row gap-4 md:gap-0 flex-col md:h-14 justify-around items-center">
       {/* brand */}
       <div className="font-semibold items-center flex gap-2">
         <span className="inline-block text-center h-6 w-6 rounded-md bg-gradient-to-r from-primary to-primary/40">
@@ -21,7 +21,7 @@ function Navbar() {
       <div className="flex gap-4 items-center">
         {checkLogin() ? (
           <>
-            <NavLink to={"/dashboard/profile"}>{user?.userName}</NavLink>
+            <NavLink to={"/profile"}>{user?.userName}</NavLink>
 
             <Button
               onClick={() => {
@@ -60,7 +60,7 @@ function Navbar() {
         )}
       </div>
     </nav>
-    )
+  );
 }
 
 export default Navbar

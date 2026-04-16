@@ -4,12 +4,14 @@ import { Toaster } from 'react-hot-toast'
 
 function RootLayout() {
   return (
-    <div>
-        <Toaster/>
-        <Navbar/>
-        <Outlet/>
+    <div className="h-screen flex flex-col overflow-hidden">
+      <Toaster />
+      <Navbar />
+      <div className="flex-1 overflow-hidden">
+        <Outlet />
+      </div>
     </div>
-  )
+  );
 }
 
 export default RootLayout
