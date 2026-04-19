@@ -236,7 +236,7 @@ function Signup() {
         </Card>
       </motion.div>
     </div>
-  )
+  );
 }
 
 export default Signup

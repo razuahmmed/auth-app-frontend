@@ -16,7 +16,7 @@ function OAuthFailure() {
     <div className="p-10 flex justify-center items-center">
       {errorMsg}
     </div>
-  )
+  );
 }
 
 export default OAuthFailure

@@ -18,6 +18,7 @@ import Appearance from './pages/settings/Appearance.tsx'
 import ManageUser from './pages/admin/ManageUser.tsx'
 import ManageMenu from './pages/admin/ManageMenu.tsx'
 import Reports from './pages/admin/Reports.tsx'
+import LdapLogin from './pages/LdapLogin.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
       <Route path='/' element={<RootLayout />} >
         <Route index element={<App />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/ldap/login' element={<LdapLogin />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/services' element={<Services />} />
         <Route path='/about' element={<About />} />

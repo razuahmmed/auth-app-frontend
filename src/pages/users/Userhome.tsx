@@ -105,7 +105,7 @@ function Userhome() {
         <p>{user1?.userRole[0].name}</p>
       </div>
     </div>
-  )
+  );
 }
 
 export default Userhome

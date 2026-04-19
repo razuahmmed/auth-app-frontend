@@ -1,38 +1,37 @@
-import { Card, CardContent } from '../components/ui/card'
-import { motion } from 'framer-motion'
-import { Button } from '../components/ui/button'
-import { Label } from '../components/ui/label'
-import { Input } from '../components/ui/input'
-import { CheckCircle2Icon, Lock, Mail } from 'lucide-react'
-import { Alert, AlertTitle } from '../components/ui/alert'
-import { Spinner } from '../components/ui/spinner'
-import { useState, type FormEvent } from 'react'
-import toast from 'react-hot-toast'
-import { NavLink, useNavigate } from 'react-router'
-import type LoginData from '../models/LoginData'
-import useAuth from '../auth/store'
-import OAuth2LoginButtons from '../components/OAuth2LoginButtons'
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '../components/ui/card';
+import { Alert, AlertTitle } from '../components/ui/alert';
+import { CheckCircle2Icon, Mail, Lock } from 'lucide-react';
+import { Label } from '../components/ui/label';
+import { Input } from '../components/ui/input';
+import { Button } from '../components/ui/button';
+import toast from 'react-hot-toast';
+import { useState, type FormEvent } from 'react';
+import useAuth from '../auth/store';
+import { useNavigate } from 'react-router';
+import type LoginData from '../models/LoginData';
+import { Spinner } from '../components/ui/spinner';
 
-function Login() {
-   const [loginData, setLoginData] = useState<LoginData>({
+function LdapLogin() {
+  const [loginData, setLoginData] = useState<LoginData>({
     userName: "",
     password: "",
   });
 
-   const [loading, setLoading] = useState<boolean>(false);
-   const [error, setError] = useState<any>(null);
-   
-   const navigate = useNavigate();
-   const login = useAuth((state) => state.login);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<any>(null);
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const navigate = useNavigate();
+  const loginLdap = useAuth((state) => state.loginLdap);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLoginData({
       ...loginData,
       [event.target.name]: event.target.value,
     });
   };
 
-   const handleFormSubmit = async (event: FormEvent) => {
+  const handleFormSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     // validation:
@@ -44,22 +43,13 @@ function Login() {
       return;
     }
 
-    // server call for login
-    // console.log(event.target);
-    // console.log(loginData);
-
     try {
       setLoading(true);
-      // const userInfo = await loginUser(loginData);
 
-      //login function : useAuth
-      await login(loginData);
-      toast.success("Login success");
-      // console.log(userInfo);
+      await loginLdap(loginData);
+      toast.success("Ldap Login success");
+
       navigate("/dashboard");
-
-      //save the current user logged in informations
-      //localstorage
     } catch (error: any) {
       console.log(error);
       if (error?.status == 400) {
@@ -73,7 +63,7 @@ function Login() {
   };
 
   return (
-     <div className="min-h-screen flex items-center justify-center bg-background text-foreground px-4 py-10">
+    <div className="min-h-screen flex items-center justify-center bg-background text-foreground px-4 py-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -89,7 +79,7 @@ function Login() {
               transition={{ delay: 0.2 }}
               className="text-4xl font-bold text-center"
             >
-              Welcome Back
+              Login with LDAP
             </motion.h1>
 
             <motion.p
@@ -165,36 +155,6 @@ function Login() {
                 )}
               </Button>
 
-
-              {/* Divider */}
-              <div className="flex items-center gap-4 my-4">
-                <div className="flex-1 h-[1px] bg-border"></div>
-                <span className="text-muted-foreground text-sm">OR</span>
-                <div className="flex-1 h-[1px] bg-border"></div>
-              </div>
-
-              {/* OAuth Buttons */}
-              <OAuth2LoginButtons />
-
-
-
-
-
-              <NavLink
-        to={"/ldap/login"}
-        className={"block"}
-      >
-        <Button
-          type="button"
-          variant="outline"
-          className="w-full flex cursor-pointer items-center gap-3 rounded-2xl"
-        >
-           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#1877F2">
-    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
-  </svg> Continue LDAP
-        </Button>
-      </NavLink>
-      
             </form>
           </CardContent>
         </Card>
@@ -203,4 +163,4 @@ function Login() {
   );
 }
 
-export default Login
+export default LdapLogin

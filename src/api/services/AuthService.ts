@@ -18,6 +18,12 @@ export const loginUser = async (loginData: LoginData) => {
   return response.data;
 };
 
+//=== login
+export const loginWithLdap = async (loginData: LoginData) => {
+  const response = await apiClient.post<LoginResponseData>(`/auth/login/ldap`, loginData);
+  return response.data;
+};
+
 //=== logout
 export const logoutUser = async () => {
   const response = await apiClient.post(`/auth/logout`);

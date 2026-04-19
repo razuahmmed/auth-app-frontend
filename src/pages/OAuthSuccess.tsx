@@ -45,7 +45,7 @@ function OAuthSuccess() {
       <Spinner />
       <h1 className="text-2xl font-semibold">Please wait....</h1>
     </div>
-  )
+  );
 }
 
 export default OAuthSuccess

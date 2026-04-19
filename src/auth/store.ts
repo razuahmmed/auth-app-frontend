@@ -3,7 +3,7 @@ import {persist} from 'zustand/middleware'
 import type LoginData from "../models/LoginData";
 import type User from "../models/User";
 import type LoginResponseData from "../models/LoginResponseData";
-import { loginUser, logoutUser } from "../api/services/AuthService";
+import { loginUser, logoutUser, loginWithLdap } from "../api/services/AuthService";
 
 const LOCAL_KEY = "app_state";
 //type AuthStatus = "idle" | "authenticating" | "authenticated" | "anonymous";
@@ -16,6 +16,7 @@ type AuthState = {
   authStatus: boolean;
   authLoading: boolean;
   login: (loginData: LoginData) => Promise<LoginResponseData>;
+  loginLdap: (loginData: LoginData) => Promise<LoginResponseData>;
   logout: (silent?: boolean) => void;
   checkLogin: () => boolean | undefined;
 
@@ -48,6 +49,28 @@ const useAuth = create<AuthState>()(
         set({ authLoading: true });
         try {
           const loginResponseData = await loginUser(loginData);
+          console.log(loginResponseData);
+          set({
+            accessToken: loginResponseData.accessToken,
+            user: loginResponseData.user,
+            authStatus: true,
+          });
+          return loginResponseData;
+        } catch (error) {
+          console.log(error);
+          throw error;
+        } finally {
+          set({
+            authLoading: false,
+          });
+        }
+      },
+
+      loginLdap: async (loginData) => {
+        console.log("started ldap login...");
+        set({ authLoading: true });
+        try {
+          const loginResponseData = await loginWithLdap(loginData);
           console.log(loginResponseData);
           set({
             accessToken: loginResponseData.accessToken,
