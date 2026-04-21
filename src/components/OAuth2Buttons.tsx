@@ -41,7 +41,7 @@ function OAuth2Buttons() {
         </Button>
       </NavLink>
     </div>
-  )
+  );
 }
 
 export default OAuth2Buttons

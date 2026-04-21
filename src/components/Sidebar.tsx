@@ -113,6 +113,10 @@ function Sidebar({ open, onClose }: { open: boolean; onClose: () => void }) {
         <div className="flex items-center gap-3 p-4 border-b border-border">
           <img
             src={user?.image || "/logos.png"}
+            onError={(e) => {
+              e.currentTarget.onerror = null; // prevent infinite loop
+              e.currentTarget.src = "/logos.png";
+            }}
             className="w-9 h-9 rounded-full object-cover"
           />
           <div>

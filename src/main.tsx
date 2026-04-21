@@ -32,8 +32,9 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/about' element={<About />} />
         <Route path="oauth/success" element={<OAuthSuccess />} />
         <Route path="oauth/failure" element={<OAuthFailure />} />
+      </Route>
 
-        <Route element={<Userlayout />}>
+      <Route element={<Userlayout />}>
           <Route path="/dashboard" element={<Userhome />} />
           <Route path="/profile" element={<Userprofile />} />
 
@@ -45,7 +46,6 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/admin/menus" element={<ManageMenu />} />
           <Route path="/admin/reports" element={<Reports />} />
         </Route>
-      </Route>
     </Routes>
   </BrowserRouter>,
 )

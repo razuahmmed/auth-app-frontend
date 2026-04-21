@@ -14,7 +14,7 @@ function Userlayout() {
   if (!checkLogin()) return <Navigate to={"/login"} />;
 
   return (
-    <div className="h-full bg-background text-foreground flex overflow-hidden">
+    <div className="h-screen bg-background text-foreground flex overflow-hidden">
 
       {/* sidebar — shared across all pages */}
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -29,6 +29,10 @@ function Userlayout() {
           <span className="font-medium text-lg flex-1">MyApp</span>
           <img
             src={user?.image || "/logos.png"}
+            onError={(e) => {
+              e.currentTarget.onerror = null; // prevent infinite loop
+              e.currentTarget.src = "/logos.png";
+            }}
             className="w-8 h-8 rounded-full object-cover"
           />
           <button

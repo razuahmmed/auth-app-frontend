@@ -158,7 +158,7 @@ function FuturisticAuthHome() {
         © {new Date().getFullYear()} Futuristic Auth. All rights reserved.
       </footer>
     </div>
-  )
+  );
 }
 
 export default FuturisticAuthHome

@@ -189,8 +189,13 @@ function Login() {
           variant="outline"
           className="w-full flex cursor-pointer items-center gap-3 rounded-2xl"
         >
-           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#1877F2">
-    <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="20" height="6" rx="2" fill="#0078D4"/>
+    <rect x="2" y="9" width="20" height="6" rx="2" fill="#0078D4" opacity="0.7"/>
+    <rect x="2" y="16" width="20" height="6" rx="2" fill="#0078D4" opacity="0.4"/>
+    <circle cx="18" cy="5" r="1" fill="white"/>
+    <circle cx="18" cy="12" r="1" fill="white"/>
+    <circle cx="18" cy="19" r="1" fill="white"/>
   </svg> Continue LDAP
         </Button>
       </NavLink>

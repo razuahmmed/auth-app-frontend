@@ -4,6 +4,8 @@ import { Button } from './ui/button'
 function OAuth2SignupButtons() {
   return (
     <div className="space-y-3">
+
+      {/* GOOGLE */}
       <NavLink
         to={`${
           import.meta.env.VITE_BASE_URL || "http://localhost:8087"
@@ -24,6 +26,7 @@ function OAuth2SignupButtons() {
         </Button>
       </NavLink>
 
+      {/* GITHUB */}
       <NavLink
         to={`${
           import.meta.env.VITE_BASE_URL || "http://localhost:8087"
@@ -41,6 +44,7 @@ function OAuth2SignupButtons() {
         </Button>
       </NavLink>
 
+      {/* FACEBOOK */}
       <NavLink
         to={`${
           import.meta.env.VITE_BASE_URL || "http://localhost:8087"
@@ -56,9 +60,46 @@ function OAuth2SignupButtons() {
     <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.791-4.697 4.533-4.697 1.313 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
   </svg> Continue with Facebook
         </Button>
+        </NavLink>
+
+        {/* AZURE */}
+      <NavLink
+        to={`${
+          import.meta.env.VITE_BASE_URL || "http://localhost:8087"
+        }/oauth2/authorization/azure?source=signup`}
+        className={"block"}
+      >
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full flex cursor-pointer items-center gap-3 rounded-2xl"
+        >
+           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+    <path d="M13.05 1.3L7.68 9.95 2 19.7h5.43l2.62-4.54 4.1 4.54H24L13.05 1.3z" fill="#0089D6"/>
+    <path d="M8.19 1.3H2L13.05 19.7l-1.62-2.84L8.19 1.3z" fill="#0089D6"/>
+  </svg> Continue with Azure
+        </Button>
+      </NavLink>
+
+      {/* OKTA */}
+      <NavLink
+        to={`${
+          import.meta.env.VITE_BASE_URL || "http://localhost:8087"
+        }/oauth2/authorization/okta?source=signup`}
+        className={"block"}
+      >
+        <Button
+          type="button"
+          variant="outline"
+          className="w-full flex cursor-pointer items-center gap-3 rounded-2xl"
+        >
+           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#007DC1">
+    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18c-3.314 0-6-2.686-6-6s2.686-6 6-6 6 2.686 6 6-2.686 6-6 6z"/>
+  </svg> Continue with Okta
+        </Button>
       </NavLink>
     </div>
-  )
+  );
 }
 
 export default OAuth2SignupButtons
